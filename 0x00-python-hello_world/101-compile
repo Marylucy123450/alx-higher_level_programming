@@ -1,2 +1,18 @@
 #!/bin/bash
-python3 -m compileall -b "$PYFILE"
+
+# Get the name of the Python file from the environment variable
+pyfile="$PYFILE"
+
+# Get the name of the output file by adding the ".pyc" extension to the name of the Python file
+outputfile="${pyfile%.py}c"
+
+# Compile the Python file and save the output as the output file
+python3 -m compileall -b "$pyfile"
+
+# Rename the output file to the desired format
+mv "$pyfile.pyc" "$outputfile"
+
+
+
+
+
